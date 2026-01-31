@@ -1,68 +1,182 @@
-# CodeIgniter 4 Application Starter
+# 📌 Sistem Pelaporan Kerusakan Peralatan
 
-## What is CodeIgniter?
+Sistem Pelaporan Kerusakan Peralatan adalah aplikasi berbasis **web** yang digunakan untuk mencatat, melaporkan, dan memantau kerusakan peralatan secara terstruktur dan terdokumentasi.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Aplikasi ini dibangun menggunakan **PHP (CodeIgniter 4)** dan **MySQL**, ditujukan untuk memudahkan pengguna dalam melaporkan kerusakan serta membantu admin dalam melakukan pengelolaan dan tindak lanjut laporan.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+---
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## 🎯 Tujuan Aplikasi
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+- Mempermudah proses pelaporan kerusakan peralatan
+- Mengurangi pencatatan manual
+- Menyediakan data laporan yang terorganisir
+- Mempercepat penanganan kerusakan
 
-## Installation & updates
+---
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+## ✨ Fitur Utama
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+### 👤 User
+- Login pengguna
+- Membuat laporan kerusakan
+- Upload foto kerusakan
+- Melihat status laporan
 
-## Setup
+### 🛠️ Admin
+- Login admin
+- Melihat semua laporan
+- Mengubah status laporan (diproses / selesai)
+- Mengelola data laporan
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+---
 
-## Important Change with index.php
+## 🧰 Teknologi yang Digunakan
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+| Teknologi | Keterangan |
+|----------|-----------|
+| PHP | Versi 8.x |
+| Framework | CodeIgniter 4 |
+| Database | MySQL / MariaDB |
+| Frontend | HTML, CSS, Bootstrap |
+| Server | Apache / XAMPP |
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+---
 
-**Please** read the user guide for a better explanation of how CI4 works!
+## 📂 Struktur Folder
 
-## Repository Management
+Sistem-Pelaporan-Kerusakan-Peralatan
+│
+├── app
+│ ├── Controllers
+│ ├── Models
+│ ├── Views
+│
+├── public
+│ ├── css
+│ ├── js
+│ └── uploads
+│
+├── database
+│ ├── migrations
+│ └── seeds
+│
+├── writable
+├── .env
+├── composer.json
+└── README.md
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+---
 
-## Server Requirements
+## 🚀 Cara Instalasi & Menjalankan Aplikasi
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+### 1️⃣ Clone Repository
+```bash
+git clone https://github.com/defriansyah666/Sistem-Pelaporan-Kerusakan-Peralatan.git
+cd Sistem-Pelaporan-Kerusakan-Peralatan
+2️⃣ Install Dependency
+composer install
+3️⃣ Konfigurasi Environment
+Salin file environment:
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+cp env .env
+Edit file .env:
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+CI_ENVIRONMENT = development
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+database.default.hostname = localhost
+database.default.database = pelaporan_kerusakan
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
+4️⃣ Import Database
+Buat database di phpMyAdmin
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+Import file .sql jika tersedia
+atau
+
+Jalankan migration:
+
+php spark migrate
+5️⃣ Jalankan Server
+php spark serve
+Akses di browser:
+
+http://localhost:8080
+🧪 Akun Default (Jika Ada)
+Role	Username	Password
+Admin	admin	admin123
+User	user	user123
+Silakan ubah password setelah login.
+
+🔄 Alur Sistem
+User login
+
+User membuat laporan kerusakan
+
+Admin melihat laporan
+
+Admin mengubah status laporan
+
+User melihat update status
+
+📸 Upload Gambar
+Format: JPG / PNG
+
+Lokasi upload:
+
+public/uploads/
+🛡️ Keamanan Dasar
+Validasi input
+
+Session login
+
+Proteksi route admin
+
+🧩 Pengembangan Selanjutnya
+Notifikasi email
+
+Role management
+
+Export laporan ke PDF
+
+Dashboard statistik
+
+API mobile
+
+🤝 Kontribusi
+Kontribusi sangat terbuka!
+
+Langkah kontribusi:
+
+Fork repository
+
+Buat branch baru
+
+Commit perubahan
+
+Pull Request
+
+📜 License
+Proyek ini menggunakan lisensi MIT
+Bebas digunakan, dimodifikasi, dan dikembangkan.
+
+👨‍💻 Developer
+Defriansyah
+GitHub: https://github.com/defriansyah666
+
+⭐ Penutup
+Jika project ini membantu, jangan lupa ⭐ repository ini.
+Terima kasih 🙏
+
+
+---
+
+Kalau kamu mau, aku bisa:
+- 🔧 **Sesuaikan README sesuai kode asli (controller/model yang ada)**
+- 🧱 Buat **komentar dokumentasi di setiap Controller & Model**
+- 📊 Buat **ERD + dokumentasi database**
+- 📱 Buat **README versi Play Store / mobile**
+
+Tinggal bilang mau lanjut ke bagian mana 🚀
